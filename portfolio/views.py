@@ -17,7 +17,12 @@ def index(request):
                 'email_address': form.cleaned_data['email_address'],
                 'message': form.cleaned_data['message']
             }
-            message = "\n".join(body.values())
+            if body['first_name'] == "":
+                body['first_name'] = "Anonymous"
+            if body['last_name'] == "":
+                body['last_name'] = "Anonymous"
+            
+            message = f"First Name: {body['first_name']}\nLast Name: {body['last_name']}\nEmail: {body['email_address']}\n\n{body['message']}"
 
             try:
                 send_mail(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
