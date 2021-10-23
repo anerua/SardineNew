@@ -473,29 +473,25 @@
         <div class="row" data-aos="fade-in">
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form method="post" class="php-email-form" >
+              {% csrf_token %}
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name*</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+                  <label for="name">First Name</label>
+                  {{ form.first_name }}
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="name">Your Email*</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                  <label for="name">Last Name</label>
+                  {{ form.last_name }}
                 </div>
               </div>
               <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+                <label for="name">Your Email*</label>
+                {{ form.email_address }}
               </div>
               <div class="form-group">
                 <label for="name">Message*</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                {{ form.message }}
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
@@ -531,7 +527,6 @@
   <script src="{% static 'portfolio/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'portfolio/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static 'portfolio/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static 'portfolio/vendor/php-email-form/validate.js' %}"></script>
   <script src="{% static 'portfolio/vendor/purecounter/purecounter.js' %}"></script>
   <script src="{% static 'portfolio/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'portfolio/vendor/typed.js/typed.min.js' %}"></script>
