@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
 from .forms import ContactForm
 
 # Create your views here.
@@ -19,7 +20,7 @@ def index(request):
             message = "\n".join(body.values())
 
             try:
-                send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
+                send_mail(subject, message, settings.EMAIL_HOST_USER, [settings.RECIPIENT_ADDRESS])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
     form = ContactForm()
