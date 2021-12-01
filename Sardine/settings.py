@@ -27,7 +27,7 @@ SECRET_KEY = 'sqg(h=&b!j@2@^hdf6p+0io_a_c8^70kjl&3!!gi27@9i=v+(a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aneruam.herokuapp.com']
+ALLOWED_HOSTS = ['aneruam.herokuapp.com', '0.0.0.0']
 
 
 # Application definition
