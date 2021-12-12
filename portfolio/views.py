@@ -4,6 +4,8 @@ from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
 from .forms import ContactForm
 
+import mimetypes, os
+
 # Create your views here.
 def index(request):
     if request.method == 'POST':
@@ -30,3 +32,16 @@ def index(request):
                 return HttpResponse('Invalid header found.')
     form = ContactForm()
     return render(request, "portfolio/index.html", {'form': form})
+
+
+def download_resume(request):
+    current_path = os.path.dirname(__file__)
+    # os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    filename = "Martins_Anerua_Resume.pdf"
+    fl_path = os.path.join(current_path, "static/portfolio/others/") + filename
+
+    fl = open(fl_path, 'rb')
+    mime_type, _ = mimetypes.guess_type(fl_path)
+    response = HttpResponse(fl, content_type=mime_type)
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    return response
