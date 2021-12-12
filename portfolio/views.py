@@ -36,7 +36,6 @@ def index(request):
 
 def download_resume(request):
     current_path = os.path.dirname(__file__)
-    # os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     filename = "Martins_Anerua_Resume.pdf"
     fl_path = os.path.join(current_path, "static/portfolio/others/") + filename
 
